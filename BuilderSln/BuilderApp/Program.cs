@@ -24,11 +24,14 @@ var report1 = new SalesReportBuilder(
 report1.Generate();
 
 
-var report2 = new SalesReportBuilder("Relatório Trimestral", "Excel",
-        new DateTime(2024, 1, 1), new DateTime(2024, 3, 31))
+var report2 = new SalesReportBuilder(
+    "Relatório Trimestral", 
+    "Excel",
+    new DateTime(2024, 1, 1), 
+    new DateTime(2024, 3, 31))
     .AddColumns("Vendedor", "Região", "Total")
     .WithCharts("Line")
-    .WithHeader("Trimestre 1") 
+    .WithHeader("Trimestre 1")
     .GroupBy("Região")
     .WithTotals(true)
     .Build();
@@ -36,14 +39,17 @@ var report2 = new SalesReportBuilder("Relatório Trimestral", "Excel",
 report2.Generate();
 
 
-var report3 = new SalesReportBuilder("Vendas Anuais", "PDF",
-        new DateTime(2024, 1, 1), new DateTime(2024, 12, 31))
+var report3 = new SalesReportBuilder(
+    "Vendas Anuais",
+    "PDF",
+    new DateTime(2024, 1, 1),
+    new DateTime(2024, 12, 31))
     .WithHeader("Relatório de Vendas")
     .WithFooter("Confidencial")
     .AddColumns("Produto", "Quantidade", "Valor")
     .WithCharts("Pie")
-    .WithTotals(true)
-    .Page("A4", "Landscape")
+    .WithTotals()
+    .Page("A4", "Portrait")
     .Build();
 
 report3.Generate();
